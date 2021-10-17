@@ -1,6 +1,13 @@
 ## lab1-1_calculator
 깃 허브 연습
 
+```python
+
+
+
+
+
+```
 [참조 영상](https://www.youtube.com/watch?v=MFJIOqxK6k8&t=146s)
 
 > 'Github 연습중' - 김홍기 -
