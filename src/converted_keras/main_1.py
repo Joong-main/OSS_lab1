@@ -26,6 +26,54 @@ def predict(frame):
     prediction = model.predict(frame)
     return prediction
 
+
+while True:
+    ret, frame = capture.read()
+    detection="None"
+    detection_Bottle=0
+    detection_Can=0
+    if cv2.waitKey(100)>0:
+        break
+    # 7번 연속 판정 시키고
+    for i in range(7):
+        preprocessed=preprocessing(frame)
+        prediciton = predict(preprocessed)
+
+        if (prediciton[0,0] <prediciton[0,1]):
+            #print("Bottle")
+            #cv2.putText(frame,'Bottle',(0,25),cv2.FONT_HERSHEY_PLAIN,1,(0,0,0))
+            detection_Bottle +=1
+        else:
+            #cv2.putText(frame,"Can",(0,25),cv2.FONT_HERSHEY_PLAIN,1,(0,0,0))
+            #print("Can")
+            detection_Can +=1
+
+    if detection_Bottle >detection_Can:
+        detection = "Bottle"
+    else:
+        detection = "Can"
+
+    print(detection)
+
+    # if detection == Bottle:
+    #   좌측 슬라이드 통로 개방
+    # else:
+    #   우측 슬라이드 통로 개방
+    cv2.imshow("VideoFrame",frame)
+
+#클래스 1이 else문
+
+
+
+
+
+
+
+
+
+'''
+
+2021/11/09
 while True:
     ret, frame = capture.read()
 
@@ -34,7 +82,7 @@ while True:
 
     preprocessed=preprocessing(frame)
     prediciton = predict(preprocessed)
-
+## cnt 판별
     if (prediciton[0,0] <prediciton[0,1]):
         print("Bottle")
         cv2.putText(frame,'Bottle',(0,25),cv2.FONT_HERSHEY_PLAIN,1,(0,0,0))
@@ -46,6 +94,10 @@ while True:
     cv2.imshow("VideoFrame",frame)
 
 #클래스 1이 else문
+'''
+
+
+
 '''
 # Create the array of the right shape to feed into the keras model
 # The 'length' or number of images you can put into the array is
