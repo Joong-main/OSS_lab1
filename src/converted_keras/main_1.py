@@ -34,7 +34,7 @@ while True:
     detection_Can=0
     if cv2.waitKey(100)>0:
         break
-    # 7번 연속 판정 시키고
+    # 7번 연속 판정 시키고 더 많이 판정된 결과(캔/병)를 디텍션 값으로 어싸인
     for i in range(7):
         preprocessed=preprocessing(frame)
         prediciton = predict(preprocessed)
